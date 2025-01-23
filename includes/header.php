@@ -206,7 +206,7 @@ unset($_SESSION['alert']); // Clear the alert after getting it
                             <a href="/ecommerce/pages/chat.php" class="user-menu-link">
                                 <i class="fas fa-comments"></i> Chat with Admin
                             </a>
-                            <a href="/ecommerce/logout.php" class="user-menu-link">
+                            <a href="logout.php" class="user-menu-link">
                                 <i class="fas fa-sign-out-alt"></i> Logout
                             </a>
                         </div>

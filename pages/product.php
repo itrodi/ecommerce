@@ -324,17 +324,68 @@ $videos = !empty($product['videos']) ? explode(',', $product['videos']) : [];
 }
 
 .similar-products {
-    margin-top: 3rem;
+    margin: 20px 0;
 }
 
 .similar-products h2 {
-    margin-bottom: 1.5rem;
+    font-size: 24px;
+    margin-bottom: 15px;
 }
 
 .products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.product-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    width: 200px; /* Adjust the card width as needed */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-image {
+    width: 100%;
+    height: 150px; /* Set the height of the image container */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image fits and maintains aspect ratio */
+    object-position: center; /* Centers the image */
+}
+
+.product-details {
+    padding: 10px;
+    text-align: center;
+}
+
+.product-details h3 {
+    font-size: 18px;
+    margin: 10px 0 5px;
+}
+
+.product-details .price {
+    font-size: 16px;
+    color: #ffff;
+    font-weight: bold;
 }
 
 .modal {

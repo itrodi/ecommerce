@@ -1,20 +1,26 @@
 <?php
+// admin/ajax/clear_messages.php
 require_once '../../config/database.php';
 require_once '../../includes/functions.php';
 require_once '../../includes/auth.php';
 
-// Check if admin is logged in
+header('Content-Type: application/json');
+
+// Check admin authentication
 if (!isAdminLoggedIn()) {
-    http_response_code(403);
     echo json_encode(['error' => 'Unauthorized']);
+    exit();
+}
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    echo json_encode(['error' => 'Invalid method']);
     exit();
 }
 
 $user_id = $_POST['user_id'] ?? 0;
 
 if (!$user_id) {
-    http_response_code(400);
-    echo json_encode(['error' => 'Invalid user ID']);
+    echo json_encode(['error' => 'User ID is required']);
     exit();
 }
 
@@ -28,6 +34,8 @@ $stmt->bind_param("i", $user_id);
 if ($stmt->execute()) {
     echo json_encode(['success' => true]);
 } else {
-    http_response_code(500);
-    echo json_encode(['error' => 'Failed to clear messages']);
+    echo json_encode([
+        'error' => 'Failed to clear messages',
+        'sql_error' => $conn->error
+    ]);
 }

@@ -4,6 +4,7 @@ require_once 'config/database.php';
 require_once 'includes/functions.php';
 require_once 'includes/header.php';
 
+
 $conn = connect_db();
 
 // Fetch categories
